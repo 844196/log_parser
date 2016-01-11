@@ -32,5 +32,10 @@ module LogParser
   end
 end
 
+# depends
+require 'singleton'
+require 'yaml'
+
 # load
 require 'log_parser/version'
+require 'log_parser/configuration'
