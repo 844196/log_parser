@@ -35,9 +35,12 @@ end
 # depends
 require 'singleton'
 require 'yaml'
+require 'date'
+require 'time'
 
 # load
 require 'log_parser/version'
 require 'log_parser/configuration'
 require 'log_parser/record/content/base'
 require 'log_parser/record/content/user'
+require 'log_parser/record/content/use_date_time'
