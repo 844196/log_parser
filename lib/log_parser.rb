@@ -39,3 +39,4 @@ require 'yaml'
 # load
 require 'log_parser/version'
 require 'log_parser/configuration'
+require 'log_parser/record/content/base'
