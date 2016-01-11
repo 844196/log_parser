@@ -1,0 +1,21 @@
+:faculty:
+  keizai:
+    - ak
+  hoken:
+    - ah
+
+:department:
+  keiei_keizai:
+    - 11
+    - 12
+  hoken_fukushi:
+    - 61
+    - 62
+
+:place:
+  1F: !ruby/regexp /PC001../
+  2F: !ruby/regexp /PC002../
+
+:student_id:
+  :legal_pattern:
+    !ruby/regexp /\A(?<faculty>\w{2})(?<join_year>\d{1,2})(?<department>\d{2})(?<range_number>\d{3})\z/
