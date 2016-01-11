@@ -21,22 +21,20 @@ module LogParser::Record::Content
     end
 
     def faculty
-      get_section(:faculty)
+      get_section(:faculty) if student?
     end
 
     def department
-      get_section(:department)
+      get_section(:department) if student?
     end
 
     private
 
     def get_section(query)
-      if student?
-        LogParser.config.instance_variable_get("@#{query}").find(->{[nil]}) {|_, codes|
-          match = @user_id.slice(LogParser.config.student_id[:legal_pattern], query)
-          codes.map(&:to_s).include?(match)
-        }.first
-      end
+      LogParser.config.instance_variable_get("@#{query}").find(->{[nil]}) {|_, codes|
+        match = @user_id.slice(LogParser.config.student_id[:legal_pattern], query)
+        codes.map(&:to_s).include?(match)
+      }.first
     end
   end
 end
