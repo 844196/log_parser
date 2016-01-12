@@ -3,6 +3,7 @@
 [![Required Ruby](https://img.shields.io/badge/ruby-%3E%3D%202.2.4-red.svg)](#)
 [![Travis branch](https://img.shields.io/travis/844196/log_parser.svg)](https://travis-ci.org/844196/log_parser)
 [![Coveralls branch](https://img.shields.io/coveralls/844196/log_parser/master.svg)](https://coveralls.io/github/844196/log_parser)
+[![Code Climate](https://img.shields.io/codeclimate/github/844196/log_parser.svg)](https://codeclimate.com/github/844196/log_parser)
 
 ## Usage
 
