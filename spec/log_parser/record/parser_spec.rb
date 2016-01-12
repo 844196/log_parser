@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'log_parser'
 
 describe LogParser::Record do
   describe '.parse' do
