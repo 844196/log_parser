@@ -10,7 +10,7 @@ module LogParser
       @@defaults.each {|k,v| self.send("#{k}=", v) }
     end
 
-    attr_accessor *@@defaults.keys
+    attr_accessor(*@@defaults.keys)
   end
 
   class << self
