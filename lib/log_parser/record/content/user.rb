@@ -7,9 +7,9 @@ module LogParser::Record::Content
     end
 
     def student?
-      if @user_id =~ LogParser.config.student_id[:legal_pattern]
+      if @user_id =~ fetch_config(:student_id, :legal_pattern)
         %i(faculty department).all? do |item|
-          LogParser.config.instance_variable_get("@#{item}").values.flatten.map(&:to_s).include?(Regexp.last_match[item])
+          fetch_config(item).values.flatten.map(&:to_s).include?(Regexp.last_match[item])
         end
       else
         false
@@ -17,7 +17,7 @@ module LogParser::Record::Content
     end
 
     def join_year
-      @user_id.slice(LogParser.config.student_id[:legal_pattern], :join_year) if student?
+      @user_id.slice(fetch_config(:student_id, :legal_pattern), :join_year) if student?
     end
 
     def faculty
@@ -31,8 +31,8 @@ module LogParser::Record::Content
     private
 
     def get_section(query)
-      LogParser.config.instance_variable_get("@#{query}").find(->{[nil]}) {|_, codes|
-        match = @user_id.slice(LogParser.config.student_id[:legal_pattern], query)
+      fetch_config(query).find(->{[nil]}) {|_, codes|
+        match = @user_id.slice(fetch_config(:student_id, :legal_pattern), query)
         codes.map(&:to_s).include?(match)
       }.first
     end

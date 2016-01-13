@@ -7,7 +7,7 @@ module LogParser::Record::Content
     end
 
     def place
-      LogParser.config.place.find(->{['unknown']}) {|_, regexp|
+      fetch_config(:place).find(->{['unknown']}) {|_, regexp|
         regexp === @client_id
       }.first
     end
