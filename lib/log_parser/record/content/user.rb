@@ -31,7 +31,7 @@ module LogParser::Record::Content
     private
 
     def get_section(query)
-      fetch_config(query).find(->{[nil]}) {|_, codes|
+      fetch_config(query).find {|_, codes|
         match = @user_id.slice(fetch_config(:student_id, :legal_pattern), query)
         codes.map(&:to_s).include?(match)
       }.first
