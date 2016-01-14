@@ -3,7 +3,7 @@ module LogParser::Record::Content
     attr_reader :use_date, :startup_time, :shutdown_time
 
     def initialize(use_date:, startup_time:, shutdown_time:)
-      raise(ArgumentError.new, 'shutdown_time must be after startup_time') unless startup_time < shutdown_time
+      raise(ArgumentError.new, 'shutdown_time must be after startup_time') unless startup_time <= shutdown_time
 
       @use_date      = use_date
       @startup_time  = startup_time

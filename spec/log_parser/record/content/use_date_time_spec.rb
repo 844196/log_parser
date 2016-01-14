@@ -35,6 +35,15 @@ describe LogParser::Record::Content::UseDateTime do
       it { is_expected.to eq 60 }
     end
 
+    context '2000/01/01 12:34:56 - 2000/01/01 12:34:56 (0sec)' do
+      let(:params) {{
+          :use_date      => Date.parse('2000/01/01'),
+          :startup_time  => Time.parse('2000/01/01 12:34:56'),
+          :shutdown_time => Time.parse('2000/01/01 12:34:56')
+      }}
+      it { is_expected.to eq 0 }
+    end
+
     context '2000/01/01 12:34:56 - 2000/01/03 12:34:56 (2day, 172800secs)' do
       let(:params) {{
           :use_date      => Date.parse('2000/01/01'),
