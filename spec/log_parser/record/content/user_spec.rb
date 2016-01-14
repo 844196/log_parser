@@ -6,32 +6,38 @@ describe LogParser::Record::Content::User do
 
   expects = [
     {:user_id => 'ak1111054',
-     :expect  => {:student?   => true,
+     :expect  => {:user_id    => 'ak1111054',
+                  :student?   => true,
                   :join_year  => '11',
                   :faculty    => 'keizai',
                   :department => 'keiei_keizai'}},
     {:user_id => 'ah9961999',
-     :expect  => {:student?   => true,
+     :expect  => {:user_id    => 'ah9961999',
+                  :student?   => true,
                   :join_year  => '99',
                   :faculty    => 'hoken',
                   :department => 'hoken_fukushi'}},
     {:user_id => '844196',
-     :expect  => {:student?   => false,
+     :expect  => {:user_id    => '844196',
+                  :student?   => false,
                   :join_year  => nil,
                   :faculty    => nil,
                   :department => nil}},
     {:user_id => 'ak1199054',
-     :expect  => {:student?   => false,
+     :expect  => {:user_id    => 'ak1199054',
+                  :student?   => false,
                   :join_year  => nil,
                   :faculty    => nil,
                   :department => nil}},
     {:user_id => 'ab1111054',
-     :expect  => {:student?   => false,
+     :expect  => {:user_id    => 'ab1111054',
+                  :student?   => false,
                   :join_year  => nil,
                   :faculty    => nil,
                   :department => nil}},
     {:user_id => 'ab1199054',
-     :expect  => {:student?   => false,
+     :expect  => {:user_id    => 'ab1199054',
+                  :student?   => false,
                   :join_year  => nil,
                   :faculty    => nil,
                   :department => nil}}
@@ -54,6 +60,10 @@ describe LogParser::Record::Content::User do
 
     describe '#faculty' do
       it { expect(user.department).to eq item[:expect][:department] }
+    end
+
+    describe '#to_h' do
+      it { expect(user.to_h).to eq item[:expect] }
     end
   end
 

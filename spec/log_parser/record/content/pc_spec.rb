@@ -24,4 +24,18 @@ describe LogParser::Record::Content::PC do
       it { is_expected.to eq 'unknown' }
     end
   end
+
+  describe '#to_h' do
+    subject { pc.to_h }
+
+    context 'client_id is "PC00199"' do
+      let(:client_id) { 'PC00199' }
+      it { is_expected.to eq({client_id: 'PC00199', place: '1F'}) }
+    end
+
+    context 'client_id is "PC99999"' do
+      let(:client_id) { 'PC99999' }
+      it { is_expected.to eq({client_id: 'PC99999', place: 'unknown'}) }
+    end
+  end
 end

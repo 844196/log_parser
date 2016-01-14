@@ -13,5 +13,14 @@ module LogParser::Record::Content
     def uptime
       (@shutdown_time - @startup_time).to_i # seconds
     end
+
+    def to_h
+      {
+        :use_date      => @use_date,
+        :startup_time  => @startup_time,
+        :shutdown_time => @shutdown_time,
+        :uptime        => uptime
+      }
+    end
   end
 end

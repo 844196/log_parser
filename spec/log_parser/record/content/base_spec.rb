@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 describe LogParser::Record::Content::Base do
-  describe 'fetch_config (private method)' do
-    before do
-      LogParser.configure do |config|
-        config.faculty = 'not nested variable'
-        config.department = {:nest_level_1=> {:nest_level_2=> ['nested variable']}}
-      end
-
-      class TestClass < LogParser::Record::Content::Base
-        def wrap_fetch_config(*args)
-          fetch_config(*args)
-        end
-      end
+  before do
+    LogParser.configure do |config|
+      config.faculty = 'not nested variable'
+      config.department = {:nest_level_1=> {:nest_level_2=> ['nested variable']}}
     end
 
-    let(:test_class) { TestClass.new }
+    class TestClass < LogParser::Record::Content::Base
+      def wrap_fetch_config(*args)
+        fetch_config(*args)
+      end
+    end
+  end
 
+  let(:test_class) { TestClass.new }
+
+  describe 'fetch_config (private method)' do
     describe 'behavior' do
       it 'call unavailable as instance method' do
         expect { test_class.fetch_config(nil) }.to raise_error(NoMethodError, /private method `fetch_config' called/)
@@ -52,5 +52,9 @@ describe LogParser::Record::Content::Base do
         end
       end
     end
+  end
+
+  describe '#to_h' do
+    it { expect { test_class.to_h }.to raise_error(RuntimeError, /Called abstract method/) }
   end
 end

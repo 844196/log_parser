@@ -44,4 +44,25 @@ describe LogParser::Record::Content::UseDateTime do
       it { is_expected.to eq 172800 }
     end
   end
+
+  describe '#to_h' do
+    subject { use_date_time.to_h }
+
+    context '2000/01/01 12:34:56 - 2000/01/01 12:35:56 (60secs)' do
+      let(:use_date)      { Date.parse('2000/01/01') }
+      let(:startup_time)  { Time.parse('2000/01/01 12:34:56') }
+      let(:shutdown_time) { Time.parse('2000/01/01 12:35:56') }
+      let(:params) {{
+          :use_date      => use_date,
+          :startup_time  => startup_time,
+          :shutdown_time => shutdown_time
+      }}
+      it do
+        is_expected.to eq({:use_date      => use_date,
+                           :startup_time  => startup_time,
+                           :shutdown_time => shutdown_time,
+                           :uptime        => 60 })
+      end
+    end
+  end
 end

@@ -1,5 +1,8 @@
 module LogParser::Record::Content
   class Base
+    def to_h
+      raise 'Called abstract method'
+    end
 
     private
 

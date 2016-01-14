@@ -28,6 +28,16 @@ module LogParser::Record::Content
       get_section(:department) if student?
     end
 
+    def to_h
+      {
+        :user_id    => @user_id,
+        :student?   => student?,
+        :join_year  => join_year,
+        :faculty    => faculty,
+        :department => department
+      }
+    end
+
     private
 
     def get_section(query)

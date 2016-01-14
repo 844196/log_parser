@@ -11,5 +11,12 @@ module LogParser::Record::Content
         regexp === @client_id
       }.first
     end
+
+    def to_h
+      {
+        :client_id => @client_id,
+        :place     => place
+      }
+    end
   end
 end
