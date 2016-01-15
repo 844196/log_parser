@@ -1,5 +1,9 @@
 module LogParser::Record
-  @record = Struct.new('Record', :pc, :user, :use_date_time)
+  @record = Struct.new('Record', :pc, :user, :use_date_time) do
+    def to_h
+      members.inject({}) {|h,m| h.update(send(m).to_h) }
+    end
+  end
 
   def self.parse(row)
     @record.new(
