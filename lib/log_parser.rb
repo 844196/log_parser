@@ -37,6 +37,7 @@ require 'singleton'
 require 'yaml'
 require 'date'
 require 'time'
+require 'thor'
 
 # load
 require 'log_parser/version'
