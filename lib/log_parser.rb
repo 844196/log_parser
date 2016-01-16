@@ -38,11 +38,13 @@ require 'yaml'
 require 'date'
 require 'time'
 require 'thor'
+require 'csv'
 
 # load
 require 'log_parser/version'
 require 'log_parser/configuration'
 require 'log_parser/record/parser'
+require 'log_parser/record/converter_cli.rb'
 require 'log_parser/record/content/base'
 require 'log_parser/record/content/user'
 require 'log_parser/record/content/use_date_time'

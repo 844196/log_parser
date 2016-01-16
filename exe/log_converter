@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'log_parser'
+
+LogParser::Record::ConverterCLI.start
