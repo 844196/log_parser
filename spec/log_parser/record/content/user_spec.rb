@@ -40,6 +40,11 @@ describe LogParser::Record::Content::User do
                   :student?   => false,
                   :join_year  => nil,
                   :faculty    => nil,
+                  :department => nil}},
+    {:user_id => 'ak1161054',
+     :expect  => {:student?   => false,
+                  :join_year  => nil,
+                  :faculty    => nil,
                   :department => nil}}
   ]
 
